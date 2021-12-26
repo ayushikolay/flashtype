@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from "././../../assets/logo.png";
+import Octocat from "././../../assets/Octocat.png";
 import "./Navbar.css";
 
 export default class Navbar extends Component {
@@ -18,7 +19,7 @@ export default class Navbar extends Component {
               href="https://github.com/ayushikolay/flashtype"
               rel="noreferrer"
             >
-              Source Code
+              <img className="Octocat-image" src={Octocat} alt="Source Code" />
             </a>
           </div>
         </div>

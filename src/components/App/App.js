@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./../Navbar/Navbar";
 import Landing from "../Landing/Landing";
 import Footer from "../Footer/Footer";
+import ChallengeSection from "../ChallengeSection/ChallengeSection";
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Landing />
 
         {/* Challenge section  */}
+        <ChallengeSection />
 
         {/* Footer  */}
         <Footer />

@@ -28,7 +28,6 @@
   font-size: 40px;
   letter-spacing: 1px;
   margin: 0 10px;
-  /* color: #34353b; */
   color: #e7e6e7;
 }
 
@@ -38,4 +37,9 @@
   /* color: #34353b; */
   color: #e7e6e7;
   font-weight: 800;
+}
+
+.Octocat-image {
+  margin-right: 16px;
+  height: 50px;
 }
