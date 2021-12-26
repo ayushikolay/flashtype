@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Navbar from "./../Navbar/Navbar";
 import Landing from "../Landing/Landing";
+import Footer from "../Footer/Footer";
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
         {/* Challenge section  */}
 
         {/* Footer  */}
+        <Footer />
       </div>
     );
   }
