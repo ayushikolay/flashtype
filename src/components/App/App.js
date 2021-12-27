@@ -7,6 +7,9 @@ import ChallengeSection from "../ChallengeSection/ChallengeSection";
 import { SAMPLE_PARAGRAPHS } from "./../../data/sampleParagraphs.js";
 
 const totalTime = 60;
+//we will use this api as we donot want to handle the counts of words by our own
+//we make api call and they will handle this for us
+const serviceUrl = "http://metaphorpsum.com/paragraphs/2/4";
 class App extends React.Component {
   state = {
     selectedParagraph: SAMPLE_PARAGRAPHS,
@@ -16,6 +19,15 @@ class App extends React.Component {
     characters: 0,
     wpm: 0,
   };
+
+  componentDidMount() {
+    // fetch(serviceUrl)
+    //   .then((response) => response.text())
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState({ selectedParagraph: data });
+    //   });
+  }
 
   render() {
     return (
