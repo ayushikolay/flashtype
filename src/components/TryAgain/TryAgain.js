@@ -1,27 +1,35 @@
 import React from "react";
 import "./TryAgain.css";
 
-const TryAgain = ({ words, characters, wpm }) => {
+const TryAgain = ({ words, characters, wpm, startAgain }) => {
   const url = "https://github.com/ayushikolay/flashtype";
   return (
     <div className="try-again-container">
       <h1>Test Results</h1>
+
       <div className="result-container">
         <p>
-          <b>Characters</b>
+          <b>Characters:&nbsp;</b>
           {characters}
         </p>
         <p>
-          <b>Words</b>
+          <b>Words:&nbsp;</b>
           {words}
         </p>
         <p>
-          <b>Speed</b>
-          {wpm}
+          <b>Speed:&nbsp;</b>
+          {wpm} wpm(Words/minute)
         </p>
       </div>
+
       <div>
-        <button className="end-btns start-again-btn">Re-try</button>
+        <button
+          onClick={() => startAgain()}
+          className="end-btns start-again-btn"
+        >
+          Re-try
+        </button>
+
         <button
           onClick={() =>
             window.open(
@@ -34,6 +42,7 @@ const TryAgain = ({ words, characters, wpm }) => {
         >
           Share
         </button>
+
         <button
           onClick={() =>
             window.open(

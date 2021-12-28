@@ -5,6 +5,8 @@ import "./TypingChallengeContainer.css";
 
 const TypingChallengeContainer = ({
   selectedParagraph,
+  testInfo,
+  onInputChange,
   words,
   characters,
   wpm,
@@ -24,10 +26,13 @@ const TypingChallengeContainer = ({
         {/* Speed */}
         <ChallengeDetailsCard cardName="Speed" cardValue={wpm} />
       </div>
+
       <div className="typewriter-container">
         <TypingChallenge
-          timeRemaining={timeRemaining}
+          testInfo={testInfo}
           selectedParagraph={selectedParagraph}
+          onInputChange={onInputChange}
+          timeRemaining={timeRemaining}
           timerStarted={timerStarted}
         />
       </div>
