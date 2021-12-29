@@ -20,8 +20,10 @@ import "./App.css";
  */
 
 const totalTime = 60;
-const DefaultState = {
-  selectedParagraph: "Hello World!",
+// const serviceUrl = "http://metaphorpsum.com/paragraphs/2/4";
+
+const defaultState = {
+  selectedParagraph: "",
   testInfo: [],
   timerStarted: false,
   timeRemaining: totalTime,
@@ -31,17 +33,8 @@ const DefaultState = {
 };
 //we will use this api as we donot want to handle the counts of words by our own
 //we make api call and they will handle this for us
-// const serviceUrl = "http://metaphorpsum.com/paragraphs/2/4";
 class App extends React.Component {
-  // state = {
-  //   selectedParagraph: SAMPLE_PARAGRAPHS,
-  //   timerStarted: false,
-  //   timeRemaining: totalTime,
-  //   words: 0,
-  //   characters: 0,
-  //   wpm: 0,
-  // };
-  state = DefaultState;
+  state = defaultState;
 
   fetchNewParagraphFallback = () => {
     const data =
@@ -57,40 +50,39 @@ class App extends React.Component {
 
     // Update the testInfo in state
     this.setState({
-      ...DefaultState,
+      ...defaultState,
       selectedParagraph: data,
       testInfo,
     });
+    window.scrollTo(0, 0);
   };
 
-  fetchNewParagraph = () => {
-    fetch("http://metaphorpsum.com/paragraphs/1/9")
-      .then((response) => response.text())
-      .then((data) => {
-        // Once the api results are here, break the selectedParagraph into test info
-        const selectedParagraphArray = data.split("");
-        const testInfo = selectedParagraphArray.map((selectedLetter) => {
-          return {
-            testLetter: selectedLetter,
-            status: "notAttempted",
-          };
-        });
+  // fetchNewParagraph = () => {
+  //   fetch(serviceUrl)
+  //     .then((response) => response.text())
+  //     .then((data) => {
+  //       // Once the api results are here, break the selectedParagraph into test info
+  //       const selectedParagraphArray = data.split("");
+  //       const testInfo = selectedParagraphArray.map((selectedLetter) => {
+  //         return {
+  //           testLetter: selectedLetter,
+  //           status: "notAttempted",
+  //         };
+  //       });
 
-        // Update the testInfo in state
-        this.setState({
-          ...DefaultState,
-          selectedParagraph: data,
-          testInfo,
-        });
-      });
-  };
+  //       // Update the testInfo in state
+  //       this.setState({
+  //         ...defaultState,
+  //         selectedParagraph: data,
+  //         testInfo,
+  //       });
+  //     });
+  // };
 
   componentDidMount() {
     // As soon as the component mounts, load the selected paragraph from the API
     this.fetchNewParagraphFallback();
   }
-
-  startAgain = () => this.fetchNewParagraphFallback();
 
   startTimer = () => {
     this.setState({ timerStarted: true });
@@ -109,6 +101,8 @@ class App extends React.Component {
       }
     }, 1000);
   };
+
+  startAgain = () => this.fetchNewParagraphFallback();
 
   handleUserInput = (inputValue) => {
     if (!this.state.timerStarted) this.startTimer();
